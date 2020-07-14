@@ -12,13 +12,12 @@ local defaultKey = Enum.KeyCode.H -- https://developer.roblox.com/en-us/api-refe
 UIS.InputBegan:Connect(function(input, gameProcessedEvent)
     if (not gameProcessedEvent) then
         if input.KeyCode == defaultKey then
-            if isRunning == false then
-                isRunning = true
+            if not isRunning then
                 Humanoid.WalkSpeed = tonumber(isTrueSpeed)
-             elseif isRunning == true then
-                isRunning = false
+             else
                 Humanoid.WalkSpeed = tonumber(isFalseSpeed)
             end
+            isRunning = not isRunning
         end
     end
 end)
